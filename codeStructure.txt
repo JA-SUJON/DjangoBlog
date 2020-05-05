@@ -1,0 +1,12 @@
+{% comment %} django-admin startproject DjangoBlog {% endcomment %}
+{% comment %} python manage.py runserver {% endcomment %}
+{% comment %} python manage.py startapp blogApp {% endcomment %}
+{% comment %} blogApp include in DjangoBlog->settings.py->INSTALLED_APPS {% endcomment %}
+{% comment %} python manage.py migrate {% endcomment %}
+{% comment %} python manage.py createsuperuser   #UN:admin #G:admin@gmail.com #P : admin123 {% endcomment %}
+{% comment %} DjangoBlog->urls.py add include & create urls for blogApp {% endcomment %}
+{% comment %} create urls.py in blogApp & copy all in DjangoBlog->urls.py {% endcomment %}
+{% comment %} blogApp->urls.py add urls for index function {% endcomment %}
+{% comment %} blogApp->views.py create index function & add HttpResponse {% endcomment %}
+{% comment %} all class ready for database in models.py & import User for foreaign key {% endcomment %}
+{% comment %} insert some data in database {% endcomment %}
