@@ -7,9 +7,17 @@ class Author(models.Model):
     name    = models.ForeignKey(User, on_delete=models.CASCADE)
     details = models.TextField()
 
+    def __str__(self):
+        return self.name.username
+    
+
 
 class Category(models.Model):
     name    = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+    
 
 
 class Article(models.Model):
@@ -17,4 +25,8 @@ class Article(models.Model):
     title          = models.CharField(max_length=200)
     body           = models.TextField()
     category       = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.title
+    
 

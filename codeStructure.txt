@@ -2,6 +2,7 @@
 {% comment %} python manage.py runserver {% endcomment %}
 {% comment %} python manage.py startapp blogApp {% endcomment %}
 {% comment %} blogApp include in DjangoBlog->settings.py->INSTALLED_APPS {% endcomment %}
+{% comment %} python manage.py makemigrations {% endcomment %}
 {% comment %} python manage.py migrate {% endcomment %}
 {% comment %} python manage.py createsuperuser   #UN:admin #G:admin@gmail.com #P : admin123 {% endcomment %}
 {% comment %} DjangoBlog->urls.py add include & create urls for blogApp {% endcomment %}
