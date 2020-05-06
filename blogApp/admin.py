@@ -9,8 +9,14 @@ class authorModel(admin.ModelAdmin):
         Model = Author
 admin.site.register(Author , authorModel)
 
+class categoryModel(admin.ModelAdmin):
+    list_display  = ["__str__"]
+    search_fields = ["__str__"]
+    list_per_page = 10
+    class Meta:
+        Model = Category
 
-admin.site.register(Category)
+admin.site.register(Category,categoryModel)
 
 class articleModel(admin.ModelAdmin):
     list_display  = ["__str__","posted_on"]
