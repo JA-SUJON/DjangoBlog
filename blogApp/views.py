@@ -1,9 +1,11 @@
 from django.shortcuts import render,HttpResponse
+from .models import Article
 
 # Create your views here.
 def index(request):
     #return HttpResponse("<h1>Hello World .. </h1>")
-    return render(request,'index.html')
+    allArticle = Article.objects.all()
+    return render(request,'index.html' , {'allArticle':allArticle})
 
 def profile(request):
     return render(request, 'profile.html')
