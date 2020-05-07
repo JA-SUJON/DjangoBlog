@@ -12,3 +12,6 @@ def profile(request):
 
 def article(request , id):
     return render(request, "single.html")
+
+def getCategory(request , name):
+    return render(request, "category.html")
