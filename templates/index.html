@@ -9,10 +9,10 @@
 	{% for data in allArticle %}
 		<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
 			<figure>
-				<a href="single.html"><img src="{{ data.image.url }}" alt="Image" class="img-responsive"></a>
+				<a href="{% url 'article' id=data.id %}"><img src="{{ data.image.url }}" alt="Image" class="img-responsive"></a>
 			</figure>
 			<span class="fh5co-meta"><a href="single.html">{{ data.category.name }}</a></span>
-			<h2 class="fh5co-article-title"><a href="single.html">{{ data.title }}</a></h2>
+			<h2 class="fh5co-article-title"><a href="{% url 'article' id=data.id %}">{{ data.title }}</a></h2>
 			<span class="fh5co-meta fh5co-date">{{ data.posted_on }}</span>
 		</article>
 	{% endfor %}
