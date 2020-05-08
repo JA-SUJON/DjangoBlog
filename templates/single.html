@@ -27,25 +27,40 @@
 {% endblock %}
 {% block content %}
     <div class="row fh5co-post-entry single-entry">
-			<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
-				<figure class="animate-box">
-					<img src="{{ data.image.url }}" alt="Image" class="img-responsive">
-				</figure>
-				<span class="fh5co-meta animate-box"><a href="{% url 'topic' name=data.category.name %}">{{ data.category.name }}</a></span>
-				<h2 class="fh5co-article-title animate-box"><a href="single.html">{{ data.title }}</a></h2>
-				<span class="fh5co-meta fh5co-date animate-box">{{ data.posted_on }}</span>
-				
-				<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
-					<div class="row">
-						<div class="col-lg-12 cp-r animate-box">
-							<p>{{ data.body }}</p>
-						</div>
+		<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+			<figure class="animate-box">
+				<img src="{{ data.image.url }}" style="margin:0 auto" alt="Image" class="img-responsive">
+			</figure>
+			<span class="fh5co-meta animate-box"><a href="{% url 'topic' name=data.category.name %}">{{ data.category.name }}</a></span>
+			<h2 class="fh5co-article-title animate-box"><a href="single.html">{{ data.title }}</a></h2>
+			<span class="fh5co-meta fh5co-date animate-box">{{ data.posted_on }}</span>
+			
+			<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
+				<div class="row">
+					<div class="col-lg-12 cp-r animate-box">
+						<p>{{ data.body }}</p>
 					</div>
-					
-					
 				</div>
-			</article>
-		</div>
+				
+				
+			</div>
+		</article>
+	</div>
+
+<div class="container"
+	<div class="row fh5co-post-entry">
+	{% for data in related %}
+		<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+			<figure>
+				<a href="{% url 'article' id=data.id %}"><img src="{{ data.image.url }}" style="height:200px;width:100%" alt="Image" class="img-responsive"></a>
+			</figure>
+			<span class="fh5co-metar"><a href="{% url 'topic' name=data.category.name %}" style="text-align:center; display:block">{{ data.category.name }}</a></span>
+			<h2 class="fh5co-article-title"><a href="{% url 'article' id=data.id %}" style="text-align:center; display:block">{{ data.title }}</a></h2>
+			<span class="fh5co-meta fh5co-date" style="text-align:center; display:block">{{ data.posted_on }}</span>
+		</article>
+	{% endfor %}
+	</div>
+</div>
 {% endblock %}
 
 			
