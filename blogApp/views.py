@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,get_object_or_404
 from .models import Article
 
 # Create your views here.
@@ -11,7 +11,11 @@ def profile(request):
     return render(request, 'profile.html')
 
 def article(request , id):
-    return render(request, "single.html")
+    singlePost = get_object_or_404(Article , id=id)
+    context={
+        "data":singlePost
+    }
+    return render(request, "single.html",context)
 
 def getCategory(request , name):
     return render(request, "category.html")
