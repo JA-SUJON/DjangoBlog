@@ -3,6 +3,17 @@
 {% block title %}Welcome To Our Project{% endblock %}
 {% block css %} {% endblock %}
 {% block content %}
-	<h2>Category</h2>
+	<div class="row fh5co-post-entry">
+	{% for data in post %}
+		<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+			<figure>
+				<a href="{% url 'article' id=data.id %}"><img src="{{ data.image.url }}" style="height:200px;width:100%" alt="Image" class="img-responsive"></a>
+			</figure>
+			<span class="fh5co-meta"><a href="{% url 'topic' name=data.category.name %}">{{ data.category.name }}</a></span>
+			<h2 class="fh5co-article-title"><a href="{% url 'article' id=data.id %}">{{ data.title }}</a></h2>
+			<span class="fh5co-meta fh5co-date">{{ data.posted_on }}</span>
+		</article>
+	{% endfor %}
+	</div>
 {% endblock  %}
 {% block js %}{% endblock %}
