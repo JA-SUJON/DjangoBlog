@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse,get_object_or_404
 from .models import Article,Category
+from django.contrib.auth import authenticate , login , logout
 
 # Create your views here.
 def index(request):
@@ -26,4 +27,7 @@ def getCategory(request , name):
 
 
 def getLogin(request):
+    if request.method == "POST":
+        userName = request.POST.get('user')
+        password = request.POST.get('password')
     return render(request, "login.html")
