@@ -23,3 +23,7 @@ def getCategory(request , name):
     cat = get_object_or_404(Category , name=name)
     post = Article.objects.filter(category=cat.id)
     return render(request, "category.html",{'post':post ,'cat':cat})
+
+
+def getLogin(request):
+    return render(request, "login.html")

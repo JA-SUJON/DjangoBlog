@@ -6,4 +6,5 @@ urlpatterns = [
     path('profile',views.profile , name="profile"),
     path('article/<id>',views.article , name="article"),
     path('category/<name>',views.getCategory , name="topic"),
+    path('login',views.getLogin , name="login"),
 ]
