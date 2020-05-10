@@ -38,5 +38,10 @@ def getLogin(request):
                 login(request, auth)
                 return redirect('index')
     return render(request, "login.html")
+
+
+def getLogout(request):
+    logout(request)
+    return redirect('index')
         
 
