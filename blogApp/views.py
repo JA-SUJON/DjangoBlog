@@ -27,7 +27,10 @@ def getCategory(request , name):
 
 
 def getLogin(request):
-    if request.method == "POST":
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        if request.method == "POST":
             user = request.POST.get('user')
             password = request.POST.get('pass')
             auth = authenticate(request, username=user, password=password)
