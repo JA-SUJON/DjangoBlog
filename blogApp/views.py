@@ -76,11 +76,14 @@ def getAuthor(request , name):
 
 #for CreatePost Page
 def getCreatePost(request):
-    form=CreateFrom(request.POST or None , request.FILES or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        instance.save();
-        return redirect('index') 
-    return render(request , "postCreate.html",{'form':form})
+    if request.user.is_authenticated:
+        form=CreateFrom(request.POST or None , request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save();
+            return redirect('index') 
+        return render(request , "postCreate.html",{'form':form})
+    else:
+        return redirect('login')
         
 
