@@ -77,9 +77,11 @@ def getAuthor(request , name):
 #for CreatePost Page
 def getCreatePost(request):
     if request.user.is_authenticated:
+        user =get_object_or_404(Author , name=request.user.id)
         form=CreateFrom(request.POST or None , request.FILES or None)
         if form.is_valid():
             instance = form.save(commit=False)
+            instance.article_author = user
             instance.save();
             return redirect('index') 
         return render(request , "postCreate.html",{'form':form})
