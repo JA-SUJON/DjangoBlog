@@ -2,12 +2,19 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from .models import Article,Category,Author
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
     #return HttpResponse("<h1>Hello World .. </h1>")
     allArticle = Article.objects.all()
-    return render(request,'index.html' , {'allArticle':allArticle})
+
+    paginator = Paginator(allArticle, 1) # Show 25 contacts per page.
+
+    page = request.GET.get('page')
+    total_article = paginator.get_page(page)
+
+    return render(request,'index.html' , {'allArticle':total_article})
 
 def profile(request):
     return render(request, 'profile.html')

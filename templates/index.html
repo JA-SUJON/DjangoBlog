@@ -16,5 +16,31 @@
 		</article>
 	{% endfor %}
 	</div>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="pagination">
+					<span class="step-links">
+						{% if allArticle.has_previous %}
+							{% comment %} <a href="?page=1">&laquo; first</a> {% endcomment %}
+							<a href="?page={{ allArticle.previous_page_number }}">previous</a>
+						{% endif %}
+
+						<span class="current" >
+							Page {{ allArticle.number }} of {{ allArticle.paginator.num_pages }}.
+						</span>
+
+						{% if allArticle.has_next %}
+							<a href="?page={{ allArticle.next_page_number }}">next</a>
+							{% comment %} <a href="?page={{ allArticle.paginator.num_pages }}">last &raquo;</a> {% endcomment %}
+						{% endif %}
+					</span>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 {% endblock  %}
 {% block js %}{% endblock %}
