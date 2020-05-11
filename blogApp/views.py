@@ -87,5 +87,8 @@ def getCreatePost(request):
         return render(request , "postCreate.html",{'form':form})
     else:
         return redirect('login')
+
+def getProfile(request):
+    return render(request , "logged_in_profile.html")
         
 
