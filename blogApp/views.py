@@ -3,13 +3,22 @@ from .models import Article,Category,Author
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+#for Search import QLookUp
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
     #return HttpResponse("<h1>Hello World .. </h1>")
     allArticle = Article.objects.all()
+    ''' search Code Start '''
+    search = request.GET.get('search')
+    if search:
+        allArticle = allArticle.filter(
+            Q(title__icontains=search)
+        )
 
-    paginator = Paginator(allArticle, 1) # Show 25 contacts per page.
+    ''' Pagination Code Start '''
+    paginator = Paginator(allArticle, 8) # Show 25 contacts per page.
 
     page = request.GET.get('page')
     total_article = paginator.get_page(page)
