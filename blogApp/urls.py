@@ -10,5 +10,5 @@ urlpatterns = [
     path('logout',views.getLogout , name="logout"),
     path('author/<name>',views.getAuthor , name="author"),
     path('create',views.getCreatePost , name="createPost"),
-    path('profile',views.getProfile , name="profile"),
+    path('logged_in_profile',views.getProfile , name="logged_in_profile"),
 ]

@@ -86,7 +86,7 @@
 				<ul>
 					<li><a href="#">Blog</a></li>
 					{% if request.user.is_authenticated %}
-						<li><a href="{% url 'profile' %}">Profile</a></li>
+						<li><a href="{% url 'logged_in_profile' %}">Profile</a></li>
 						<li><a href="{% url 'logout' %}">Logout</a></li>
 					{% else %}
 						<li><a href="{% url 'login' %}">LogIn</a></li>
