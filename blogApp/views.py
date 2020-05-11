@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 #for Search import QLookUp
 from django.db.models import Q
+#for createPost from import
+from .forms import CreateFrom
 
 # Create your views here.
 def index(request):
@@ -71,5 +73,10 @@ def getAuthor(request , name):
         "post":post
     }
     return render(request , "profile.html",context)
+
+#for CreatePost Page
+def getCreatePost(request):
+    form=CreateFrom()
+    return render(request , "postCreate.html",{'form':form})
         
 

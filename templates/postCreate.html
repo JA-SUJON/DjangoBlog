@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome To Our Project{% endblock %}
+{% block css %} {% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<form action="" method="POST">
+				{% csrf_token %}
+					{{ form.as_p }}
+					<button type="submit" class="btn btn-success">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock  %}
+{% block js %}{% endblock %}
