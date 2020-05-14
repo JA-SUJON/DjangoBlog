@@ -109,6 +109,7 @@ def getUpdate(request, id):
             instance = form.save(commit=False)
             instance.article_author = user
             instance.save()
+            messages.success(request, 'Post details updated.')
             return redirect('logged_in_profile') 
         return render(request , "postCreate.html",{'form':form})
     else:

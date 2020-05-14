@@ -27,7 +27,15 @@
 {% endblock %}
 {% block content %}
         <div class="container">
+        {% if messages %}
+            <div class="messages" style="height: 50px;margin-top: 166px;">
+                {% for message in messages %}
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <a href="{% url 'createPost' %}" class="btn btn-primary pull-right">ADD NEW ARTICEL</a>
+
         <table class="table">
             <thead>
                 <tr>
