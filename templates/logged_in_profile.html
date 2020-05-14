@@ -42,7 +42,7 @@
                     <td>{{ data.title }}</td>
                     <td>{{ data.posted_on }}</td>
                     <td>
-                        <a href="{% url 'update' id=data.id %}">Edit</a> | <a href="">Delete</a>
+                        <a href="{% url 'update' id=data.id %}">Edit</a> | <a href="{% url 'delete' id=data.id %}">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}

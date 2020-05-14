@@ -12,4 +12,5 @@ urlpatterns = [
     path('create',views.getCreatePost , name="createPost"),
     path('logged_in_profile',views.getProfile , name="logged_in_profile"),
     path('update/<id>',views.getUpdate , name="update"),
+    path('delete/<id>', views.getDelete, name="delete")
 ]

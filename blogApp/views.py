@@ -111,3 +111,10 @@ def getUpdate(request, id):
         return redirect('login')
 
 
+def getDelete(request, id):
+    if request.user.is_authenticated:
+        post=get_object_or_404(Article, id=id)
+        post.delete()
+        return redirect('logged_in_profile')
+    else:
+        return redirect('login')
