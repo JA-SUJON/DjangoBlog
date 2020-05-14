@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 #for createPost from import
 from .forms import CreateFrom
+#for message
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -56,6 +58,8 @@ def getLogin(request):
             if auth is not None:
                 login(request, auth)
                 return redirect('index')
+            else:
+                messages.add_message(request, messages.ERROR, 'UserName Or Password mismatch')
     return render(request, "login.html")
 
 

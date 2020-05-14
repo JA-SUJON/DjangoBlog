@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+#for message
+from django.contrib.messages import constants as messages
 
 import os
 
@@ -129,3 +131,10 @@ MEDIA_URL = '/media/'
 MEDIAFILES_DIRS = [
     os.path.join(BASE_DIR , 'media'),
 ]
+
+# for message 
+MESSAGE_TAGS = {
+    messages.INFO: 'alert alert-info',
+    messages.SUCCESS: 'alert alert-success',
+    messages.ERROR: 'alert alert-danger',
+}
