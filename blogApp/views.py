@@ -91,7 +91,7 @@ def getCreatePost(request):
 def getProfile(request):
     if request.user.is_authenticated:
         user =get_object_or_404(Author , name=request.user.id)
-        post = Article.objects.filter(article_author=request.user.id)
+        post = Article.objects.filter(article_author=user.id)
         return render(request , "logged_in_profile.html" , {'post':post ,'user':user})
     else:
         return redirect('login')
