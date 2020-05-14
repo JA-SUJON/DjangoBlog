@@ -41,7 +41,9 @@
                 <tr>
                     <td>{{ data.title }}</td>
                     <td>{{ data.posted_on }}</td>
-                    <td><a href="">Edit</a> | <a href="">Delete</a> </td>
+                    <td>
+                        <a href="{% url 'update' id=data.id %}">Edit</a> | <a href="">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

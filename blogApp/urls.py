@@ -11,4 +11,5 @@ urlpatterns = [
     path('author/<name>',views.getAuthor , name="author"),
     path('create',views.getCreatePost , name="createPost"),
     path('logged_in_profile',views.getProfile , name="logged_in_profile"),
+    path('update/<id>',views.getUpdate , name="update"),
 ]
