@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome To Our Project{% endblock %}
+{% block css %}
+	<style>
+		#fh5co-offcanvas .fh5co-bio {
+    width: 290px;
+    padding: 50px;
+}
+	</style>
+{% endblock %}
+{% block profile %}
+
+{% endblock %}
+{% block content %}
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
+</div>
+    
+{% endblock %}
+
+			
+			

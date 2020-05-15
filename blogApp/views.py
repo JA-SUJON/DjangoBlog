@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 #for Search import QLookUp
 from django.db.models import Q
 #for createPost from import
-from .forms import CreateFrom
+from .forms import CreateFrom , UserRegistration
 #for message
 from django.contrib import messages
 
@@ -123,3 +123,13 @@ def getDelete(request, id):
         return redirect('logged_in_profile')
     else:
         return redirect('login')
+
+def getRegistern(request):
+    form = UserRegistration(request.POST or None , request.FILES or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, 'Registration Successfully..')
+        return redirect('login')
+
+    return render(request , "registration.html",{"form":form})
