@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 #for Search import QLookUp
 from django.db.models import Q
 #for createPost from import
-from .forms import CreateFrom , UserRegistration
+from .forms import CreateFrom , UserRegistration , CreateAuthor
 #for message
 from django.contrib import messages
 
@@ -94,9 +94,20 @@ def getCreatePost(request):
 
 def getProfile(request):
     if request.user.is_authenticated:
-        user =get_object_or_404(Author , name=request.user.id)
-        post = Article.objects.filter(article_author=user.id)
-        return render(request , "logged_in_profile.html" , {'post':post ,'user':user})
+        user =get_object_or_404(User , id=request.user.id)
+        author_profile=Author.objects.filter(name=user.id)
+        if author_profile:
+            authorUser=get_object_or_404(Author , name=request.user.id)
+            post = Article.objects.filter(article_author=authorUser)
+            return render(request , "logged_in_profile.html" , {'post':post ,'user':authorUser})
+        else:
+            form=CreateAuthor(request.POST or None , request.FILES or None)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.name = user
+                instance.save()
+            return render(request , "createAuthorProfile.html",{"form":form}) 
+
     else:
         return redirect('login')
         

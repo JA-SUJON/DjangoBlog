@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome To Our Project{% endblock %}
+{% block css %} {% endblock %}
+{% block content %}
+    <div class="container">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Create Author</button>
+        </form>
+    </div>
+{% endblock  %}
+{% block js %}{% endblock %}

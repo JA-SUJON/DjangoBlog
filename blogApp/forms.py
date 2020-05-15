@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article
+from .models import Article,Author
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -23,4 +23,13 @@ class UserRegistration(UserCreationForm):
             'password1',
             'password2'
 
+        ]
+
+
+class CreateAuthor(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields=[
+            'profile_image',
+            'details'
         ]
