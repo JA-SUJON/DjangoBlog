@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
-from .models import Article,Category,Author
+from .models import Article,Category,Author,Comment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 #for Search import QLookUp
 from django.db.models import Q
 #for createPost from import
-from .forms import CreateFrom , UserRegistration , CreateAuthor
+from .forms import CreateFrom , UserRegistration , CreateAuthor ,CommentForm
 #for message
 from django.contrib import messages
 
@@ -34,10 +34,18 @@ def profile(request):
 
 def article(request , id):
     singlePost = get_object_or_404(Article , id=id)
+    postComment=Comment.objects.filter(id=id)
     related    = Article.objects.filter(category = singlePost.category).exclude(id=id)[:4]
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.post = singlePost
+        instance.save()
     context={
         "data":singlePost,
-        "related":related
+        "related":related,
+        "form":form,
+        "postComment":postComment
     }
     return render(request, "single.html",context)
 
