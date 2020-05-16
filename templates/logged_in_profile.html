@@ -34,7 +34,7 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <a href="{% url 'createPost' %}" class="btn btn-primary pull-right">ADD NEW ARTICEL</a>
+        <a href="{% url 'blog:createPost' %}" class="btn btn-primary pull-right">ADD NEW ARTICEL</a>
 
         <table class="table">
             <thead>
@@ -50,7 +50,7 @@
                     <td>{{ data.title }}</td>
                     <td>{{ data.posted_on }}</td>
                     <td>
-                        <a href="{% url 'update' id=data.id %}">Edit</a> | <a href="{% url 'delete' id=data.id %}">Delete</a>
+                        <a href="{% url 'blog:update' id=data.id %}">Edit</a> | <a href="{% url 'blog:delete' id=data.id %}">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}

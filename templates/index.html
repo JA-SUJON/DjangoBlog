@@ -9,16 +9,16 @@
 			<figure>
 				<a href="{{ data.get_single_url }}"><img src="{{ data.image.url }}" style="height:200px;width:100%" alt="Image" class="img-responsive"></a>
 			</figure>
-			<span class="fh5co-meta"><a href="{% url 'topic' name=data.category.name %}">{{ data.category.name }}</a></span>
+			<span class="fh5co-meta"><a href="{% url 'blog:topic' name=data.category.name %}">{{ data.category.name }}</a></span>
 			<h2 class="fh5co-article-title"><a href="{{ data.get_single_url }}">{{ data.title }}</a></h2>
-			<h4><a href="{% url 'author' name=data.article_author.name.username %}">{{ data.article_author.name }}</a> </h4>
+			<h4><a href="{% url 'blog:author' name=data.article_author.name.username %}">{{ data.article_author.name }}</a> </h4>
 			<span class="fh5co-meta fh5co-date">{{ data.posted_on }}</span>
 		</article>
 	{% endfor %}
 	</div>
 
 
-	<div class="container-fluid">
+	{% comment %} <div class="container-fluid"> {% endcomment %}
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="pagination">

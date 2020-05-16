@@ -35,7 +35,7 @@ class Article(models.Model):
         return self.title
     def get_single_url(self):
         #return '/article/%s'%self.idP
-        return reverse('article', kwargs={"id":self.id})
+        return reverse('blog:article', kwargs={"id":self.id})
         
 
 class Comment(models.Model):
