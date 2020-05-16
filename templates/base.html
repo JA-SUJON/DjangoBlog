@@ -85,6 +85,7 @@
 				<h3 class="heading">Menu</h3>
 				<ul>
 					<li><a href="#">Blog</a></li>
+					<li><a href="{% url 'blog:allCategory' %}">Category</a> </li>
 					{% if request.user.is_authenticated %}
 						<li><a href="{% url 'blog:logged_in_profile' %}">Profile</a></li>
 						<li><a href="{% url 'blog:logout' %}">Logout</a></li>

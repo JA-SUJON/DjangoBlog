@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 #for Search import QLookUp
 from django.db.models import Q
 #for createPost from import
-from .forms import CreateFrom , UserRegistration , CreateAuthor ,CommentForm
+from .forms import CreateFrom , UserRegistration , CreateAuthor ,CommentForm , CreateCategory
 #for message
 from django.contrib import messages
 
@@ -57,7 +57,7 @@ def getCategory(request , name):
 
 def getLogin(request):
     if request.user.is_authenticated:
-        return redirect('index')
+        return redirect('blog:index')
     else:
         if request.method == "POST":
             user = request.POST.get('user')
@@ -65,7 +65,7 @@ def getLogin(request):
             auth = authenticate(request, username=user, password=password)
             if auth is not None:
                 login(request, auth)
-                return redirect('index')
+                return redirect('blog:index')
             else:
                 messages.add_message(request, messages.ERROR, 'UserName Or Password mismatch')
     return render(request, "login.html")
@@ -73,7 +73,7 @@ def getLogin(request):
 
 def getLogout(request):
     logout(request)
-    return redirect('index')
+    return redirect('blog:index')
 
 
 def getAuthor(request , name):
@@ -152,3 +152,17 @@ def getRegistern(request):
         return redirect('login')
 
     return render(request , "registration.html",{"form":form})
+
+
+def getAllCategory(request):
+    allCategory = Category.objects.all()
+    return render(request , "allCategory.html",{"allCategory":allCategory})
+
+def getCreateCategory(request):
+    form = CreateCategory(request.POST or None)
+    if form.is_valid():
+        instance=form.save(commit=False)
+        instance.save()
+        messages.success(request , "Category Create Successfully")
+        return redirect('blog:allCategory')
+    return render(request , "createCategory.html",{"form":form})

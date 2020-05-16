@@ -15,4 +15,6 @@ urlpatterns = [
     path('update/<id>',views.getUpdate , name="update"),
     path('delete/<id>', views.getDelete, name="delete"),
     path('registration', views.getRegistern, name="registration"),
+    path('allCategory',views.getAllCategory , name="allCategory"),
+    path('createCategory',views.getCreateCategory , name="createCategory"),
 ]
