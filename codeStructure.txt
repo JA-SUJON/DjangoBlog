@@ -11,3 +11,17 @@
 {% comment %} blogApp->views.py create index function & add HttpResponse {% endcomment %}
 {% comment %} all class ready for database in models.py & import User for foreaign key {% endcomment %}
 {% comment %} insert some data in database {% endcomment %}
+
+
+
+
+
+
+{% comment %} For Change Default Admin Panel.. {% endcomment %}
+
+    {% comment %} 
+        1.github.com/django
+        1.django->django->contrib->admin->templates->admin->base.html == for login.html page 
+        1.create admin holder in ->templates ->create base.html page and paste all data
+    
+    {% endcomment %}
