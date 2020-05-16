@@ -9,25 +9,28 @@ from django.db.models import Q
 from .forms import CreateFrom , UserRegistration , CreateAuthor ,CommentForm , CreateCategory
 #for message
 from django.contrib import messages
+#when we use class
+from django.views import View
 
 # Create your views here.
-def index(request):
+class index(View):
     #return HttpResponse("<h1>Hello World .. </h1>")
-    allArticle = Article.objects.all()
-    ''' search Code Start '''
-    search = request.GET.get('search')
-    if search:
-        allArticle = allArticle.filter(
-            Q(title__icontains=search)
-        )
+    def get(self , request):
+        allArticle = Article.objects.all()
+        ''' search Code Start '''
+        search = request.GET.get('search')
+        if search:
+            allArticle = allArticle.filter(
+                Q(title__icontains=search)
+            )
 
-    ''' Pagination Code Start '''
-    paginator = Paginator(allArticle, 8) # Show 25 contacts per page.
+        ''' Pagination Code Start '''
+        paginator = Paginator(allArticle, 8) # Show 25 contacts per page.
 
-    page = request.GET.get('page')
-    total_article = paginator.get_page(page)
+        page = request.GET.get('page')
+        total_article = paginator.get_page(page)
 
-    return render(request,'index.html' , {'allArticle':total_article})
+        return render(request,'index.html' , {'allArticle':total_article})
 
 def profile(request):
     return render(request, 'profile.html')

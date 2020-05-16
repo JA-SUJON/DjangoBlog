@@ -3,7 +3,7 @@ from . import views
 app_name="blogApp"
 
 urlpatterns = [
-    path('', views.index , name="index"),
+    path('', views.index.as_view() , name="index"),
     path('profile',views.profile , name="profile"),
     path('article/<id>',views.article , name="article"),
     path('category/<name>',views.getCategory , name="topic"),
