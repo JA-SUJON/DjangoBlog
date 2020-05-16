@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 # Create your models here.
 
@@ -32,6 +33,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    def get_single_url(self):
+        #return '/article/%s'%self.idP
+        return reverse('article', kwargs={"id":self.id})
+        
 
 class Comment(models.Model):
     post = models.ForeignKey(Article , on_delete=models.CASCADE)
