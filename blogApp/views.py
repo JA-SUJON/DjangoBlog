@@ -166,3 +166,10 @@ def getCreateCategory(request):
         messages.success(request , "Category Create Successfully")
         return redirect('blog:allCategory')
     return render(request , "createCategory.html",{"form":form})
+
+def getDeleteCategory(request , id):
+    if request.user.is_authenticated:
+        category = get_object_or_404(Category , id=id)
+        category.delete()
+        messages.success(request , "Category Delete Successfully")
+        return redirect('blog:allCategory')

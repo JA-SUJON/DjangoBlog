@@ -17,4 +17,5 @@ urlpatterns = [
     path('registration', views.getRegistern, name="registration"),
     path('allCategory',views.getAllCategory , name="allCategory"),
     path('createCategory',views.getCreateCategory , name="createCategory"),
+    path('categoryDelete/<id>',views.getDeleteCategory , name="categoryDelete"),
 ]

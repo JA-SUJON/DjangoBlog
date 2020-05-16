@@ -49,7 +49,7 @@
                 <tr>
                     <td><a href="{% url 'blog:topic' name=data.name %}">{{ data.name }}</a></td>
                     <td>
-                        <a href="">Edit</a> | <a href="">Delete</a>
+                        <a href="">Edit</a> | <a href="{% url 'blog:categoryDelete' id=data.id %}">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
